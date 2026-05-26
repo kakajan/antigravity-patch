@@ -1,0 +1,43 @@
+{
+  "fake_ip": {
+    "cidr": "198.18.0.0/15",
+    "enabled": false
+  },
+  "_version": "1.9",
+  "_comment": "Antigravity-Proxy (installed by antigravity-proxy-patch)",
+  "traffic_logging": false,
+  "target_processes": [
+    "language_server.exe",
+    "language_server_windows",
+    "Antigravity.exe",
+    "node.exe"
+  ],
+  "proxy_rules": {
+    "allowed_ports": [80, 443, 8080, 12334],
+    "udp_fallback": "block",
+    "ipv6_mode": "proxy",
+    "routing": {
+      "rules": [],
+      "use_default_private": false,
+      "default_action": "proxy",
+      "enabled": true,
+      "priority_mode": "order"
+    },
+    "udp_mode": "block",
+    "dns_mode": "direct"
+  },
+  "child_injection_mode": "filtered",
+  "timeout": {
+    "recv": 60000,
+    "connect": 60000,
+    "send": 60000
+  },
+  "log_level": "info",
+  "child_injection": true,
+  "proxy": {
+    "type": "PROXY_TYPE",
+    "host": "PROXY_HOST",
+    "port": PROXY_PORT
+  },
+  "child_injection_exclude": []
+}

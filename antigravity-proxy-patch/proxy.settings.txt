@@ -1,0 +1,6 @@
+# Edit these values before running Install-Patch.bat on a new PC.
+# Lines starting with # are ignored.
+
+HOST=127.0.0.1
+PORT=12334
+TYPE=http
