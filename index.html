@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fix Google Antigravity authentication and AI feature issues behind corporate proxies, VPNs, and restricted networks with a lightweight DLL injection patch.">
+  <title>Google Antigravity Proxy Patch - Bypass Restricted Networks</title>
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="./assets/script.js" defer></script>
+</head>
+<body>
+
+  <!-- Navigation / Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo-area">
+        <div class="logo-icon">AG</div>
+        <span data-i18n="logo-text">Antigravity Proxy Patch</span>
+      </a>
+      
+      <div class="nav-actions">
+        <!-- Language Switcher Button -->
+        <button id="lang-btn" class="lang-toggle" aria-label="Toggle language">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+          </svg>
+          <span data-i18n="lang-text">فارسی</span>
+        </button>
+        
+        <!-- GitHub Repository Badge -->
+        <a href="https://github.com/kakajan/antigravity-patch" class="github-badge" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.436 22 12.017 22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span data-i18n="btn-star">Star Repo</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="container">
+        <div class="version-tag">
+          <span data-i18n="hero-badge">v1.9 Stable</span>
+        </div>
+        <h1 data-i18n="hero-title">Bypass Restricted Networks in Google Antigravity</h1>
+        <p class="description" data-i18n="hero-subtitle">Fix Google Antigravity authentication and AI feature issues behind corporate proxies, VPNs, and restricted networks with a lightweight DLL injection patch.</p>
+        
+        <div class="cta-group">
+          <a href="https://github.com/kakajan/antigravity-patch/archive/refs/heads/main.zip" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <span data-i18n="btn-download">Download ZIP</span>
+          </a>
+          <a href="https://github.com/kakajan/antigravity-patch/fork" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+            <span data-i18n="btn-fork">Fork on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Network Flow Diagram Section -->
+    <section class="diagram-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-i18n="diagram-title">How it Works</h2>
+          <p data-i18n="diagram-desc">How traffic is intercepted at the process level and routed through your proxy</p>
+        </div>
+        
+        <div class="diagram-container">
+          <div class="network-flow">
+            <!-- Node 1: Antigravity IDE -->
+            <div class="node node-active">
+              <span class="node-icon">💻</span>
+              <h4 data-i18n="node-ide-title">Antigravity IDE</h4>
+              <p data-i18n="node-ide-desc">Requests blocked directly</p>
+            </div>
+            
+            <div class="connection-line">
+              <div class="pulse-dot"></div>
+            </div>
+            
+            <!-- Node 2: Inject DLL -->
+            <div class="node node-special">
+              <span class="node-icon">⚙️</span>
+              <h4 data-i18n="node-dll-title">version.dll</h4>
+              <p data-i18n="node-dll-desc">Intercepts socket calls</p>
+            </div>
+            
+            <div class="connection-line">
+              <div class="pulse-dot" style="animation-delay: 0.8s;"></div>
+            </div>
+            
+            <!-- Node 3: Local Proxy -->
+            <div class="node">
+              <span class="node-icon">🛡️</span>
+              <h4 data-i18n="node-proxy-title">Your Proxy</h4>
+              <p data-i18n="node-proxy-desc">Clash, V2Ray, Corp Proxy</p>
+            </div>
+            
+            <div class="connection-line">
+              <div class="pulse-dot" style="animation-delay: 1.6s;"></div>
+            </div>
+            
+            <!-- Node 4: Google Auth/Servers -->
+            <div class="node node-target">
+              <span class="node-icon">☁️</span>
+              <h4 data-i18n="node-google-title">Google Servers</h4>
+              <p data-i18n="node-google-desc">Auth & AI features active</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem vs Solution Section -->
+    <section class="problem-solution-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-i18n="section-problem-title">The Problem vs The Solution</h2>
+          <p data-i18n="section-problem-desc">Understanding why Google Antigravity fails to connect and how this patch resolves it.</p>
+        </div>
+        
+        <div class="split-grid">
+          <!-- Problem Card -->
+          <div class="info-card problem-card">
+            <span class="card-badge" data-i18n="problem-badge">The Problem</span>
+            <h3 data-i18n="problem-title">Connection Failures</h3>
+            <ul>
+              <li data-i18n="problem-li-1">Antigravity requires direct access to Google servers for sign-in and AI features.</li>
+              <li data-i18n="problem-li-2">Fails completely behind corporate HTTP proxies or restricted/sanctioned networks.</li>
+              <li data-i18n="problem-li-3">Child processes like language_server.exe bypass system-wide proxy settings.</li>
+              <li data-i18n="problem-li-4">Common error: 'failed to make code assist backend request'.</li>
+            </ul>
+            <div class="console-mockup">
+              <div>[Error - 09:42:01] language_server.exe: connection refused</div>
+              <div>[Error - 09:42:02] Authentication failed: unable to reach accounts.google.com</div>
+              <div>[Warning] failed to make code assist backend request</div>
+            </div>
+          </div>
+          
+          <!-- Solution Card -->
+          <div class="info-card solution-card">
+            <span class="card-badge" data-i18n="solution-badge">The Solution</span>
+            <h3 data-i18n="solution-title">Process Interception</h3>
+            <ul>
+              <li data-i18n="solution-li-1">DLL injection intercepts network calls at the operating system socket level.</li>
+              <li data-i18n="solution-li-2">Forces all child processes (language_server.exe, node.exe) through your proxy.</li>
+              <li data-i18n="solution-li-3">Automated config script sets env variables, VS Code, and GUI settings.</li>
+              <li data-i18n="solution-li-4">Fully open source, transparent, telemetry-free, and easily reversible.</li>
+            </ul>
+            <div class="console-mockup" style="color: #a7f3d0; border-color: rgba(16, 185, 129, 0.2);">
+              <div style="color: #34d399;">[Info - 09:45:12] version.dll: Intercepting network traffic...</div>
+              <div style="color: #34d399;">[Info - 09:45:13] Tunnel established: accounts.google.com -> 127.0.0.1:12334</div>
+              <div style="color: #34d399;">[Success] Antigravity authentication successful!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-i18n="section-features-title">Key Features</h2>
+          <p data-i18n="section-features-desc">Designed specifically for developers in restricted environments, focusing on simplicity and security.</p>
+        </div>
+        
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+              </svg>
+            </div>
+            <h3 data-i18n="feature-1-title">One-Click Installer</h3>
+            <p data-i18n="feature-1-desc">Run the simple batch script. No administrator privileges required for user-level installation.</p>
+          </div>
+          
+          <!-- Feature 2 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.827m11.379-8.16l1.15-.827M8.14 21.27l.707-1.03m6.132-8.96l.707-1.03M12 3v1.5m0 15V21m-3.077-8.457l-.513-1.41m5.13 14.095l-.513-1.41M17.785 5.106l-.827 1.15m-8.16 11.379l-.827 1.15M21.27 8.14l-1.03.707m-8.96 6.132l-1.03.707" />
+              </svg>
+            </div>
+            <h3 data-i18n="feature-2-title">DLL Injection Technique</h3>
+            <p data-i18n="feature-2-desc">Intercepts traffic directly via version.dll placed next to the executable. Highly stable and non-destructive.</p>
+          </div>
+          
+          <!-- Feature 3 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0110 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.746 3.746 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0114 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
+            </div>
+            <h3 data-i18n="feature-3-title">Zero Telemetry & Tracking</h3>
+            <p data-i18n="feature-3-desc">The patch is open source. It collects no data, has no telemetry, and doesn't inspect network contents.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation Steps Section -->
+    <section class="steps-section" id="how-to-use">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-i18n="section-steps-title">Installation Guide</h2>
+          <p data-i18n="section-steps-desc">Follow these three simple steps to patch your Google Antigravity installation.</p>
+        </div>
+        
+        <div class="steps-container">
+          <!-- Step 1 -->
+          <div class="step-row">
+            <div class="step-num-col">
+              <div class="step-number">1</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <h3 data-i18n="step-1-title">Configure Your Proxy</h3>
+              <p data-i18n="step-1-desc">Open antigravity-proxy-patch/proxy.settings.txt in any text editor and configure your HTTP proxy host and port.</p>
+              
+              <!-- Code block -->
+              <div class="code-block-wrapper">
+                <div class="code-header">
+                  <span>proxy.settings.txt</span>
+                  <button class="copy-btn" data-code-id="code-step1" aria-label="Copy settings content">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5M21 8.25v7.5A2.25 2.25 0 0118.75 18H9A2.25 2.25 0 016.75 15.75v-7.5A2.25 2.25 0 019 6h9.75A2.25 2.25 0 0121 8.25z" />
+                    </svg>
+                    <span data-i18n="copy-code">Copy</span>
+                  </button>
+                </div>
+                <pre id="code-step1">HOST=127.0.0.1
+PORT=12334
+TYPE=http</pre>
+              </div>
+
+              <!-- Proxies Matrix -->
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-i18n="table-tool">Proxy Tool</th>
+                      <th>HOST</th>
+                      <th>PORT</th>
+                      <th data-i18n="table-notes">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Clash</strong></td>
+                      <td><code>127.0.0.1</code></td>
+                      <td><code>7890</code></td>
+                      <td data-i18n="table-clash-notes">Default HTTP proxy port</td>
+                    </tr>
+                    <tr>
+                      <td><strong>V2RayN</strong></td>
+                      <td><code>127.0.0.1</code></td>
+                      <td><code>10809</code></td>
+                      <td data-i18n="table-v2ray-notes">HTTP proxy (not SOCKS)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Shadowsocks</strong></td>
+                      <td><code>127.0.0.1</code></td>
+                      <td><code>1080</code></td>
+                      <td data-i18n="table-ss-notes">With HTTP proxy plugin</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Corporate Proxy</strong></td>
+                      <td><code>Your Corp IP</code></td>
+                      <td><code>Your Port</code></td>
+                      <td data-i18n="table-corp-notes">Ask your IT department</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Squid</strong></td>
+                      <td><code>127.0.0.1</code></td>
+                      <td><code>3128</code></td>
+                      <td data-i18n="table-squid-notes">Default Squid port</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="step-row">
+            <div class="step-num-col">
+              <div class="step-number">2</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <h3 data-i18n="step-2-title">Run the Installer</h3>
+              <p data-i18n="step-2-desc">Double-click Install-Patch.bat to automatically apply all patches, edit VS Code user settings, and set env variables.</p>
+              
+              <div class="code-block-wrapper">
+                <div class="code-header">
+                  <span>PowerShell (Option B)</span>
+                  <button class="copy-btn" data-code-id="code-step2" aria-label="Copy shell command">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5M21 8.25v7.5A2.25 2.25 0 0118.75 18H9A2.25 2.25 0 016.75 15.75v-7.5A2.25 2.25 0 019 6h9.75A2.25 2.25 0 0121 8.25z" />
+                    </svg>
+                    <span data-i18n="copy-code">Copy</span>
+                  </button>
+                </div>
+                <pre id="code-step2">.\Install-Patch.ps1 -AntigravityDir "C:\Program Files\Antigravity"</pre>
+              </div>
+
+              <div class="step-note">
+                <p><strong data-i18n="step-2-title">Run the Installer</strong>: <span data-i18n="step-2-note">Advanced Users: You can run Install-Patch.ps1 in PowerShell with custom flags like -SkipEnv or -SkipUserSettings.</span></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="step-row">
+            <div class="step-num-col">
+              <div class="step-number">3</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <h3 data-i18n="step-3-title">Launch Antigravity</h3>
+              <p data-i18n="step-3-desc">Always start Antigravity using the newly created batch file in the install folder.</p>
+              
+              <div class="code-block-wrapper">
+                <div class="code-header">
+                  <span>Launcher Path</span>
+                  <button class="copy-btn" data-code-id="code-step3" aria-label="Copy launcher path">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5M21 8.25v7.5A2.25 2.25 0 0118.75 18H9A2.25 2.25 0 016.75 15.75v-7.5A2.25 2.25 0 019 6h9.75A2.25 2.25 0 0121 8.25z" />
+                    </svg>
+                    <span data-i18n="copy-code">Copy</span>
+                  </button>
+                </div>
+                <pre id="code-step3">%LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat</pre>
+              </div>
+
+              <div class="step-note" style="border-inline-start-color: var(--color-error); background: rgba(239, 68, 68, 0.03);">
+                <p><strong style="color: #fda4af;">Important</strong>: <span data-i18n="step-3-note">Do NOT use the regular Start Menu shortcut, as it won't load the proxy injector DLL.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ & Troubleshooting Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-i18n="section-faq-title">Frequently Asked Questions</h2>
+          <p data-i18n="section-faq-desc">Find answers to common questions and troubleshooting solutions.</p>
+        </div>
+        
+        <div class="faq-container">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq-1-q">Will Google ban my account for using this?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq-1-a">No. This patch only routes network traffic through a proxy — it doesn't modify authentication tokens, API calls, or any Google service behavior. It is functionally identical to using a system-wide proxy.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq-2-q">Can I use this on macOS or Linux?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq-2-a">This patch is Windows-only. The DLL injection technique is specific to Windows. macOS/Linux users should configure a system-wide proxy or use tools like `proxychains`.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq-3-q">What should I do after Antigravity updates?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq-3-a">Antigravity updates overwrite `version.dll` and `config.json`. You can easily re-patch by double-clicking `Reinstall-Proxy-Patch.bat` (if the patch folder is next to Antigravity) or re-running the installer.</p>
+            </div>
+          </div>
+          
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq-4-q">How do I completely uninstall the patch?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq-4-a">Run `Uninstall-Patch.bat` to clean up the injected DLL and configuration files. Environment variables and VS Code settings can be manually restored if needed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security & Transparency Banner -->
+    <section>
+      <div class="container">
+        <div class="security-banner">
+          <div class="security-badge-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <h2 data-i18n="section-security-title">Security & Transparency</h2>
+          <p data-i18n="security-sub-desc">Every file in this repository is inspectable. You can verify everything yourself.</p>
+          
+          <div class="security-grid">
+            <div class="security-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <h4 data-i18n="security-item-1-title">Fully Open Source</h4>
+              <p data-i18n="security-item-1-desc">Inspect all batch, PowerShell, and DLL source code.</p>
+            </div>
+            
+            <div class="security-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+              </svg>
+              <h4 data-i18n="security-item-2-title">Zero Telemetry</h4>
+              <p data-i18n="security-item-2-desc">No data collection, no analytics, no external tracking.</p>
+            </div>
+            
+            <div class="security-item">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+              </svg>
+              <h4 data-i18n="security-item-3-title">100% Reversible</h4>
+              <p data-i18n="security-item-3-desc">The uninstaller script cleanly removes all changes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-info">
+          <h3>
+            <div class="logo-icon" style="width:28px;height:28px;font-size:0.9rem;">AG</div>
+            <span data-i18n="logo-text">Antigravity Proxy Patch</span>
+          </h3>
+          <p data-i18n="footer-desc">A lightweight, open-source utility to bypass restricted networks in Google Antigravity. Built with care for the developer community.</p>
+        </div>
+        
+        <div class="footer-links">
+          <h4 data-i18n="footer-col-links">Project Links</h4>
+          <ul>
+            <li><a href="https://github.com/kakajan/antigravity-patch" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="https://github.com/kakajan/antigravity-patch/issues" target="_blank" rel="noopener noreferrer">Report an Issue</a></li>
+            <li><a href="https://github.com/kakajan/antigravity-patch/pulls" target="_blank" rel="noopener noreferrer">Pull Requests</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4 data-i18n="footer-col-author">Author</h4>
+          <ul>
+            <li><strong data-i18n="author-name">kakajan</strong></li>
+            <li><span data-i18n="author-title" style="font-size: 0.8rem; color: var(--text-dark);">Senior Full-Stack Developer & AI Coach</span></li>
+            <li><span data-i18n="author-company" style="font-size: 0.85rem; color: var(--color-primary); font-weight: 600;">AYTRONIC</span></li>
+            <li><a href="mailto:faslolkhitab@gmail.com">faslolkhitab@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>
+          <span data-i18n="copyright">All rights reserved.</span> &copy; 2026.
+        </div>
+        <div>
+          <span data-i18n="license-text">Licensed under the MIT License</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
