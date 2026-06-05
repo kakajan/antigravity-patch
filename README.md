@@ -86,12 +86,23 @@ language_server.exe: connection refused
 4. Routes all traffic through your configured upstream proxy
 5. Authentication and AI features work normally
 
+## Repository Structure & Supported IDEs
+
+This repository is split into two separate patch packages depending on your Google Antigravity installation:
+
+*   **[Antigravity 2](./Antigravity%202)**: Specifically configured for **Google Antigravity 2.x** (typically installed in `%LOCALAPPDATA%\Programs\Antigravity`).
+*   **[Antigravity IDE](./Antigravity%20IDE)**: Specifically configured for **Google Antigravity IDE** (typically installed in `%LOCALAPPDATA%\Programs\Antigravity IDE`).
+
+Choose the folder matching your installed version, and follow the steps below using the scripts inside that folder.
+
+---
+
 ## Requirements
 
 | Requirement | Details |
 |-------------|---------|
 | **OS** | Windows 10/11 (x64) |
-| **Antigravity** | Google Antigravity 2.x installed |
+| **Antigravity** | Google Antigravity 2.x OR Google Antigravity IDE installed |
 | **Proxy** | Access to an HTTP proxy (corporate, VPN, or local like Clash/V2Ray) |
 | **PowerShell** | 5.1+ (included in Windows 10/11) |
 | **Admin rights** | Not required for user-level install (may be needed for env vars on locked-down PCs) |
@@ -104,27 +115,35 @@ language_server.exe: connection refused
 # 1. Clone or download this repository
 git clone https://github.com/kakajan/antigravity-patch.git
 
-# 2. Edit your proxy settings
-# Open: antigravity-proxy-patch/proxy.settings.txt
+# 2. Open the matching folder (Antigravity 2 or Antigravity IDE) and edit settings:
+# Open: <Folder>/antigravity-proxy-patch/proxy.settings.txt
 # Set your proxy HOST and PORT
 
 # 3. Run the installer
-# Double-click: antigravity-proxy-patch/Install-Patch.bat
+# Double-click: <Folder>/antigravity-proxy-patch/Install-Patch.bat
 ```
 
-Then launch Antigravity using the new shortcut:
+Then launch Antigravity using the proxy-aware launcher inside your install folder:
 
-```
-%LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat
-```
+*   **For Antigravity 2:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat
+    ```
+*   **For Antigravity IDE:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity IDE\Antigravity-with-proxy.bat
+    ```
 
 > **Important:** Do NOT use the regular Start Menu shortcut — `version.dll` won't load.
 
+
 ## Installation
+
+First, navigate to the folder corresponding to your edition (**`Antigravity 2`** or **`Antigravity IDE`**). All subsequent files and scripts are located within that folder (referred to as `<Folder>`).
 
 ### Step 1: Configure Your Proxy
 
-Open `antigravity-proxy-patch/proxy.settings.txt` in any text editor:
+Open `<Folder>/antigravity-proxy-patch/proxy.settings.txt` in any text editor:
 
 ```ini
 # Edit these values before running Install-Patch.bat
@@ -148,14 +167,16 @@ TYPE=http
 **Option A — Double-click (recommended):**
 
 ```
-Double-click: antigravity-proxy-patch/Install-Patch.bat
+Double-click: <Folder>/antigravity-proxy-patch/Install-Patch.bat
 ```
 
 **Option B — PowerShell (advanced):**
 
+Open PowerShell inside the `<Folder>/antigravity-proxy-patch` directory and run:
+
 ```powershell
-# Custom install directory
-.\Install-Patch.ps1 -AntigravityDir "D:\Apps\Antigravity"
+# Custom install directory (specify your Antigravity installation folder)
+.\Install-Patch.ps1 -AntigravityDir "C:\Program Files\<Edition>"
 
 # Skip environment variable changes
 .\Install-Patch.ps1 -SkipEnv
@@ -169,11 +190,16 @@ Double-click: antigravity-proxy-patch/Install-Patch.bat
 
 ### Step 3: Launch Antigravity
 
-Always use the proxy-aware launcher:
+Always launch Antigravity using the proxy-aware launcher inside your install folder:
 
-```
-%LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat
-```
+*   **For Antigravity 2:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat
+    ```
+*   **For Antigravity IDE:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity IDE\Antigravity-with-proxy.bat
+    ```
 
 You can create a desktop shortcut to this `.bat` file for convenience.
 
@@ -185,9 +211,9 @@ The `Install-Patch.ps1` script performs these actions:
 
 | Action | Location | Purpose |
 |--------|----------|---------|
-| Copies `version.dll` | `Antigravity\` and `Antigravity\resources\bin\` | DLL injection for proxy interception |
-| Generates `config.json` | `Antigravity\` and `Antigravity\resources\bin\` | Proxy configuration for the DLL |
-| Creates `Antigravity-with-proxy.bat` | `Antigravity\` | Launcher that sets env vars before starting |
+| Copies `version.dll` | `Antigravity\` or `Antigravity IDE\` | DLL injection for proxy interception |
+| Generates `config.json` | `Antigravity\` or `Antigravity IDE\` | Proxy configuration for the DLL |
+| Creates `Antigravity-with-proxy.bat` | `Antigravity\` or `Antigravity IDE\` | Launcher that sets env vars before starting |
 | Sets user env vars | `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY` | System-wide proxy for child processes |
 | Updates VS Code settings | `%APPDATA%\Antigravity\User\settings.json` | `http.proxy`, `http.proxySupport` |
 | Updates GUI config | `%APPDATA%\Antigravity\gui_config.json` | `upstream_proxy` settings |
@@ -218,6 +244,7 @@ The generated `config.proxy.json` supports additional options:
     "language_server.exe",
     "language_server_windows",
     "Antigravity.exe",
+    "Antigravity IDE.exe",
     "node.exe"
   ],
   "proxy_rules": {
@@ -239,17 +266,22 @@ The generated `config.proxy.json` supports additional options:
 ### Daily Use
 
 1. Start your proxy/VPN tool (Clash, V2Ray, etc.)
-2. Launch Antigravity with: `Antigravity-with-proxy.bat`
-3. Sign in to Google — authentication should work
-4. Use AI features normally
+2. Launch Antigravity using the proxy-aware batch file (`Antigravity-with-proxy.bat`) in your install directory.
+3. Sign in to Google — authentication should work.
+4. Use AI features normally.
 
 ### Verify It's Working
 
 After launching once, check the proxy log:
 
-```
-%LOCALAPPDATA%\Programs\Antigravity\logs\proxy-YYYYMMDD.log
-```
+*   **For Antigravity 2:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity\logs\proxy-YYYYMMDD.log
+    ```
+*   **For Antigravity IDE:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity IDE\logs\proxy-YYYYMMDD.log
+    ```
 
 Look for these lines:
 
@@ -260,39 +292,36 @@ HTTP CONNECT: tunnel established for *.googleapis.com
 
 ### Using on Another Computer
 
-1. Copy the `antigravity-proxy-patch` folder to a USB drive or network share
-2. Install Google Antigravity on the target PC
-3. Edit `proxy.settings.txt` for that network's proxy
-4. Run `Install-Patch.bat`
-5. Launch with `Antigravity-with-proxy.bat`
-
-> **Tip:** You can zip the `antigravity-proxy-patch` folder for easy distribution.
+1. Copy your matching edition folder (e.g. `Antigravity IDE`) to a USB drive or network share.
+2. Install Google Antigravity on the target PC.
+3. Edit `proxy.settings.txt` inside that folder for the target network's proxy.
+4. Run `Install-Patch.bat`.
+5. Launch with `Antigravity-with-proxy.bat`.
 
 ## After Antigravity Updates
 
 Antigravity updates overwrite `version.dll` and `config.json`. After each update:
 
-**Option A — Use the reinstall script (if patch folder is next to Antigravity):**
+**Option A — Use the reinstall script:**
 
 ```
-Double-click: Reinstall-Proxy-Patch.bat
+Double-click: <Folder>/Reinstall-Proxy-Patch.bat
 ```
 
 **Option B — Re-run the installer manually:**
 
 ```
-Double-click: antigravity-proxy-patch/Install-Patch.bat
+Double-click: <Folder>/antigravity-proxy-patch/Install-Patch.bat
 ```
-
-> **Tip:** Keep the `antigravity-proxy-patch` folder next to your Antigravity installation for easy re-patching.
 
 ## Uninstall
 
-Run the uninstaller:
+Run the uninstaller inside your patch folder:
 
 ```
-Double-click: antigravity-proxy-patch/Uninstall-Patch.bat
+Double-click: <Folder>/antigravity-proxy-patch/Uninstall-Patch.bat
 ```
+
 
 This removes:
 - `version.dll` from Antigravity folder

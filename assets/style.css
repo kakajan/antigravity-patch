@@ -1739,3 +1739,86 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: #2d334e;
 }
+
+/* Version Switcher Styles */
+.version-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 auto 2.5rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.selector-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.version-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(13, 16, 27, 0.6);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem;
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+  width: 100%;
+}
+
+.tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  color: var(--text-muted);
+  font-family: var(--font-family);
+  gap: 0.15rem;
+}
+
+.tab-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tab-btn.active {
+  background: var(--gradient-accent);
+  color: var(--text-main);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.tab-btn .tab-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tab-btn .tab-subtitle {
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+@media (min-width: 480px) {
+  .version-tabs {
+    padding: 0.45rem;
+  }
+  .tab-btn {
+    padding: 0.75rem 1.5rem;
+  }
+  .tab-btn .tab-title {
+    font-size: 1.05rem;
+  }
+  .tab-btn .tab-subtitle {
+    font-size: 0.75rem;
+  }
+}

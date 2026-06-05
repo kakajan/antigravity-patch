@@ -52,8 +52,10 @@ const translations = {
     
     "section-steps-title": "Installation Guide",
     "section-steps-desc": "Follow these three simple steps to patch your Google Antigravity installation.",
+    "selector-label": "Choose your Antigravity edition:",
     "step-1-title": "Configure Your Proxy",
-    "step-1-desc": "Open antigravity-proxy-patch/proxy.settings.txt in any text editor and configure your HTTP proxy host and port.",
+    "step-1-desc-ag2": "Open <code>Antigravity 2/antigravity-proxy-patch/proxy.settings.txt</code> in any text editor and configure your HTTP proxy host and port.",
+    "step-1-desc-agide": "Open <code>Antigravity IDE/antigravity-proxy-patch/proxy.settings.txt</code> in any text editor and configure your HTTP proxy host and port.",
     "table-tool": "Proxy Tool",
     "table-notes": "Notes",
     "table-clash-notes": "Default HTTP proxy port",
@@ -62,7 +64,8 @@ const translations = {
     "table-corp-notes": "Ask your IT department",
     "table-squid-notes": "Default Squid port",
     "step-2-title": "Run the Installer",
-    "step-2-desc": "Double-click Install-Patch.bat to automatically apply all patches, edit VS Code user settings, and set env variables.",
+    "step-2-desc-ag2": "Double-click <code>Antigravity 2/antigravity-proxy-patch/Install-Patch.bat</code> to automatically apply all patches, edit VS Code user settings, and set env variables.",
+    "step-2-desc-agide": "Double-click <code>Antigravity IDE/antigravity-proxy-patch/Install-Patch.bat</code> to automatically apply all patches, edit VS Code user settings, and set env variables.",
     "step-2-note": "Advanced Users: You can run Install-Patch.ps1 in PowerShell with custom flags like -SkipEnv or -SkipUserSettings.",
     "step-3-title": "Launch Antigravity",
     "step-3-desc": "Always start Antigravity using the newly created batch file in the install folder.",
@@ -147,8 +150,10 @@ const translations = {
     
     "section-steps-title": "راهنمای نصب و راه‌اندازی",
     "section-steps-desc": "فقط با طی کردن این ۳ مرحله، مشکل اتصال گوگل آنتی‌گرَویتی را برطرف کنید.",
+    "selector-label": "نسخه گوگل آنتی‌گرَویتی خود را انتخاب کنید:",
     "step-1-title": "تنظیم مشخصات پراکسی",
-    "step-1-desc": "فایل proxy.settings.txt را در پوشه پچ باز کرده و HOST و PORT پراکسی خود را وارد کنید.",
+    "step-1-desc-ag2": "فایل <code>proxy.settings.txt</code> را در پوشه <code>Antigravity 2/antigravity-proxy-patch</code> باز کرده و تنظیمات پراکسی خود را وارد کنید.",
+    "step-1-desc-agide": "فایل <code>proxy.settings.txt</code> را در پوشه <code>Antigravity IDE/antigravity-proxy-patch</code> باز کرده و تنظیمات پراکسی خود را وارد کنید.",
     "table-tool": "ابزار پراکسی",
     "table-notes": "توضیحات",
     "table-clash-notes": "پورت پیش‌فرض HTTP Proxy",
@@ -157,10 +162,11 @@ const translations = {
     "table-corp-notes": "از واحد فناوری اطلاعات بپرسید",
     "table-squid-notes": "پورت پیش‌فرض Squid",
     "step-2-title": "اجرای اسکریپت نصب",
-    "step-2-desc": "روی فایل Install-Patch.bat دابل‌کلیک کنید تا تنظیمات VS Code، متغیرهای محیطی و DLL به‌صورت خودکار اعمال شوند.",
+    "step-2-desc-ag2": "روی فایل <code>Install-Patch.bat</code> در پوشه <code>Antigravity 2/antigravity-proxy-patch</code> دابل‌کلیک کنید تا تنظیمات VS Code، متغیرهای محیطی و DLL به‌صورت خودکار اعمال شوند.",
+    "step-2-desc-agide": "روی فایل <code>Install-Patch.bat</code> در پوشه <code>Antigravity IDE/antigravity-proxy-patch</code> دابل‌کلیک کنید تا تنظیمات VS Code، متغیرهای محیطی و DLL به‌صورت خودکار اعمال شوند.",
     "step-2-note": "کاربران پیشرفته: می‌توانید اسکریپت Install-Patch.ps1 را در پاورشل با پارامترهای سفارشی مثل SkipEnv- یا Quiet- اجرا کنید.",
     "step-3-title": "اجرای آنتی‌گرَویتی",
-    "step-3-desc": "همیشه برنامه را با استفاده از فایل لانچر جدید ساخته شده در مسیر نصب اجرا کنید:",
+    "step-3-desc": "همیشه برنامه را با استفاده از فایل لانچر جدید ساخته شده در مسیر نصب اجرا کنید.",
     "step-3-note": "مهم: از شورتکات معمولی منوی استارت استفاده نکنید، چون در آن حالت پچ لود نخواهد شد.",
     
     "section-faq-title": "سوالات متداول و عیب‌یابی",
@@ -199,6 +205,38 @@ const translations = {
 
 // State Manager
 let currentLang = 'en';
+let activeVersion = 'ag2';
+
+// Version content updater
+function updateVersionContent() {
+  const step1Desc = document.getElementById('step-1-desc');
+  const step2Desc = document.getElementById('step-2-desc');
+  const codeStep2 = document.getElementById('code-step2');
+  const codeStep3 = document.getElementById('code-step3');
+
+  if (step1Desc && translations[currentLang][`step-1-desc-${activeVersion}`]) {
+    step1Desc.innerHTML = translations[currentLang][`step-1-desc-${activeVersion}`];
+  }
+  if (step2Desc && translations[currentLang][`step-2-desc-${activeVersion}`]) {
+    step2Desc.innerHTML = translations[currentLang][`step-2-desc-${activeVersion}`];
+  }
+  
+  if (codeStep2) {
+    if (activeVersion === 'ag2') {
+      codeStep2.innerText = `.\\Install-Patch.ps1 -AntigravityDir "C:\\Program Files\\Antigravity"`;
+    } else {
+      codeStep2.innerText = `.\\Install-Patch.ps1 -AntigravityDir "C:\\Program Files\\Antigravity IDE"`;
+    }
+  }
+  
+  if (codeStep3) {
+    if (activeVersion === 'ag2') {
+      codeStep3.innerText = `%LOCALAPPDATA%\\Programs\\Antigravity\\Antigravity-with-proxy.bat`;
+    } else {
+      codeStep3.innerText = `%LOCALAPPDATA%\\Programs\\Antigravity IDE\\Antigravity-with-proxy.bat`;
+    }
+  }
+}
 
 // Apply translations to DOM elements
 function applyTranslations(lang) {
@@ -228,6 +266,9 @@ function applyTranslations(lang) {
       element.setAttribute('placeholder', translations[lang][key]);
     }
   });
+
+  // Update version specific dynamic texts
+  updateVersionContent();
 }
 
 // Toggle Language
@@ -322,4 +363,15 @@ document.addEventListener('DOMContentLoaded', () => {
     nodes[currentNodeIndex].classList.add('node-active');
     currentNodeIndex = (currentNodeIndex + 1) % nodes.length;
   }, 2500); // sync with animation duration of CSS pulse dots
+
+  // 5. Version Tabs Switcher binding
+  const tabButtons = document.querySelectorAll('.version-tabs .tab-btn');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeVersion = btn.getAttribute('data-version');
+      updateVersionContent();
+    });
+  });
 });

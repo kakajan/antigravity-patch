@@ -86,12 +86,23 @@ language_server.exe: connection refused
 4. تمام ترافیک از طریق پراکسی بالادستی هدایت می‌شود
 5. احراز هویت و قابلیت‌های هوش مصنوعی به‌درستی کار می‌کنند
 
+## ساختار ریپازیتوری و نسخه‌های پشتیبانی‌شده
+
+این ریپازیتوری بسته به نوع نصب Google Antigravity شما، به دو پچ مجزا تقسیم شده است:
+
+*   **[Antigravity 2](./Antigravity%202)**: مخصوص **Google Antigravity 2.x** (که معمولاً در مسیر `%LOCALAPPDATA%\Programs\Antigravity` نصب می‌شود).
+*   **[Antigravity IDE](./Antigravity%20IDE)**: مخصوص **Google Antigravity IDE** (که معمولاً در مسیر `%LOCALAPPDATA%\Programs\Antigravity IDE` نصب می‌شود).
+
+پوشه متناسب با نسخه نصب‌شده خود را انتخاب کرده و مراحل زیر را با استفاده از اسکریپت‌های درون آن پوشه دنبال کنید.
+
+---
+
 ## پیشنیازها
 
 | پیشنیاز | جزئیات |
 |---------|--------|
 | **سیستم‌عامل** | ویندوز ۱۰/۱۱ (۶۴ بیتی) |
-| **آنتی‌گرَویتی** | Google Antigravity 2.x نصب شده باشد |
+| **آنتی‌گرَویتی** | Google Antigravity 2.x یا Google Antigravity IDE نصب شده باشد |
 | **پراکسی** | دسترسی به پراکسی HTTP (سازمانی، VPN، یا محلی مثل Clash/V2Ray) |
 | **PowerShell** | نسخه ۵.۱+ (در ویندوز ۱۰/۱۱ موجود است) |
 | **دسترسی ادمین** | برای نصب در سطح کاربر لازم نیست (در سیستم‌های محدود ممکن است لازم شود) |
@@ -104,27 +115,35 @@ language_server.exe: connection refused
 # ۱. کلون یا دانلود ریپازیتوری
 git clone https://github.com/kakajan/antigravity-patch.git
 
-# ۲. ویرایش تنظیمات پراکسی
-# باز کنید: antigravity-proxy-patch/proxy.settings.txt
+# ۲. باز کردن پوشه مربوطه (Antigravity 2 یا Antigravity IDE) و ویرایش تنظیمات پراکسی:
+# باز کنید: <Folder>/antigravity-proxy-patch/proxy.settings.txt
 # HOST و PORT پراکسی خود را وارد کنید
 
 # ۳. اجرای نصب‌کننده
-# دابل‌کلیک: antigravity-proxy-patch/Install-Patch.bat
+# دابل‌کلیک: <Folder>/antigravity-proxy-patch/Install-Patch.bat
 ```
 
-سپس آنتی‌گرَویتی را با میانبر جدید اجرا کنید:
+سپس آنتی‌گرَویتی را با میانبر پراکسی‌دار درون پوشه نصب خود اجرا کنید:
 
-```
-%LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat
-```
+*   **برای Antigravity 2:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat
+    ```
+*   **برای Antigravity IDE:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity IDE\Antigravity-with-proxy.bat
+    ```
 
 > **مهم:** از شورتکات معمولی Start Menu استفاده نکنید — `version.dll` بارگذاری نمی‌شود.
 
+
 ## نصب و راه‌اندازی
+
+ابتدا به پوشه متناسب با نسخه خود (**`Antigravity 2`** یا **`Antigravity IDE`**) مراجعه کنید. تمام فایل‌ها و اسکریپت‌های بعدی در این پوشه (که با نام `<Folder>` به آن اشاره می‌شود) قرار دارند.
 
 ### مرحله ۱: پیکربندی پراکسی
 
-فایل `antigravity-proxy-patch/proxy.settings.txt` را در یک ویرایشگر متن باز کنید:
+فایل `<Folder>/antigravity-proxy-patch/proxy.settings.txt` را در یک ویرایشگر متن باز کنید:
 
 ```ini
 # این مقادیر را قبل از اجرای Install-Patch.bat ویرایش کنید
@@ -148,14 +167,16 @@ TYPE=http
 **گزینه الف — دابل‌کلیک (توصیه شده):**
 
 ```
-دابل‌کلیک روی: antigravity-proxy-patch/Install-Patch.bat
+دابل‌کلیک روی: <Folder>/antigravity-proxy-patch/Install-Patch.bat
 ```
 
 **گزینه ب — PowerShell (پیشرفته):**
 
+پاورشل را در پوشه `<Folder>/antigravity-proxy-patch` باز کرده و اجرا کنید:
+
 ```powershell
-# مسیر نصب سفارشی
-.\Install-Patch.ps1 -AntigravityDir "D:\Apps\Antigravity"
+# مسیر نصب سفارشی (مسیر محل نصب آنتی‌گرَویتی خود را مشخص کنید)
+.\Install-Patch.ps1 -AntigravityDir "C:\Program Files\<Edition>"
 
 # بدون تغییر متغیرهای محیطی
 .\Install-Patch.ps1 -SkipEnv
@@ -169,13 +190,18 @@ TYPE=http
 
 ### مرحله ۳: اجرای آنتی‌گرَویتی
 
-همیشه از لانچر پراکسی‌دار استفاده کنید:
+همیشه آنتی‌گرَویتی را با استفاده از فایل لانچر جدید ساخته شده در مسیر نصب اجرا کنید:
 
-```
-%LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat
-```
+*   **برای Antigravity 2:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity\Antigravity-with-proxy.bat
+    ```
+*   **برای Antigravity IDE:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity IDE\Antigravity-with-proxy.bat
+    ```
 
-می‌توانید یک شورتکات دسکتاپ از این فایل `.bat` بسازید.
+می‌توانید یک میانبر دسکتاپ از این فایل `.bat` بسازید.
 
 ## پیکربندی
 
@@ -185,9 +211,9 @@ TYPE=http
 
 | عملیات | محل | هدف |
 |--------|-----|-----|
-| کپی `version.dll` | `Antigravity\` و `Antigravity\resources\bin\` | تزریق DLL برای رهگیری پراکسی |
-| تولید `config.json` | `Antigravity\` و `Antigravity\resources\bin\` | پیکربندی پراکسی برای DLL |
-| ساخت `Antigravity-with-proxy.bat` | `Antigravity\` | لانچری که متغیرهای محیطی را تنظیم می‌کند |
+| کپی `version.dll` | `Antigravity\` یا `Antigravity IDE\` | تزریق DLL برای رهگیری پراکسی |
+| تولید `config.json` | `Antigravity\` یا `Antigravity IDE\` | پیکربندی پراکسی برای DLL |
+| ساخت `Antigravity-with-proxy.bat` | `Antigravity\` یا `Antigravity IDE\` | لانچری که متغیرهای محیطی را تنظیم می‌کند |
 | تنظیم متغیرهای کاربر | `HTTP_PROXY`، `HTTPS_PROXY`، `NO_PROXY` | پراکسی سیستمی برای پردازش‌های فرزند |
 | بروزرسانی تنظیمات VS Code | `%APPDATA%\Antigravity\User\settings.json` | `http.proxy`، `http.proxySupport` |
 | بروزرسانی پیکربندی GUI | `%APPDATA%\Antigravity\gui_config.json` | تنظیمات `upstream_proxy` |
@@ -218,6 +244,7 @@ TYPE=http         # نوع پراکسی: http (فقط http پشتیبانی می
     "language_server.exe",
     "language_server_windows",
     "Antigravity.exe",
+    "Antigravity IDE.exe",
     "node.exe"
   ],
   "proxy_rules": {
@@ -239,7 +266,7 @@ TYPE=http         # نوع پراکسی: http (فقط http پشتیبانی می
 ### استفاده روزانه
 
 1. ابزار پراکسی/VPN خود را اجرا کنید (Clash، V2Ray و غیره)
-2. آنتی‌گرَویتی را با `Antigravity-with-proxy.bat` اجرا کنید
+2. آنتی‌گرَویتی را با فایل لانچر پراکسی‌دار (`Antigravity-with-proxy.bat`) در مسیر نصب اجرا کنید.
 3. وارد حساب گوگل شوید — احراز هویت باید کار کند
 4. از قابلیت‌های هوش مصنوعی به‌راحتی استفاده کنید
 
@@ -247,9 +274,14 @@ TYPE=http         # نوع پراکسی: http (فقط http پشتیبانی می
 
 بعد از اولین اجرا، لاگ پراکسی را بررسی کنید:
 
-```
-%LOCALAPPDATA%\Programs\Antigravity\logs\proxy-YYYYMMDD.log
-```
+*   **برای Antigravity 2:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity\logs\proxy-YYYYMMDD.log
+    ```
+*   **برای Antigravity IDE:**
+    ```
+    %LOCALAPPDATA%\Programs\Antigravity IDE\logs\proxy-YYYYMMDD.log
+    ```
 
 به دنبال این خطوط بگردید:
 
@@ -260,38 +292,34 @@ HTTP CONNECT: tunnel established for *.googleapis.com
 
 ### استفاده روی کامپیوتر دیگر
 
-1. پوشه `antigravity-proxy-patch` را روی فلش یا شبکه کپی کنید
-2. Google Antigravity را روی سیستم مقصد نصب کنید
-3. `proxy.settings.txt` را برای پراکسی آن شبکه ویرایش کنید
-4. `Install-Patch.bat` را اجرا کنید
-5. با `Antigravity-with-proxy.bat` اجرا کنید
-
-> **نکته:** می‌توانید پوشه `antigravity-proxy-patch` را زیپ کنید تا راحت‌تر منتقل شود.
+1. پوشه پچ مربوط به نسخه خود را (مثلاً `Antigravity IDE`) روی فلش یا شبکه کپی کنید.
+2. Google Antigravity را روی سیستم مقصد نصب کنید.
+3. فایل `proxy.settings.txt` را درون آن پوشه برای پراکسی آن شبکه ویرایش کنید.
+4. `Install-Patch.bat` را اجرا کنید.
+5. با `Antigravity-with-proxy.bat` اجرا کنید.
 
 ## بعد از آپدیت آنتی‌گرَویتی
 
 آپدیت‌های آنتی‌گرَویتی فایل‌های `version.dll` و `config.json` را بازنویسی می‌کنند. بعد از هر آپدیت:
 
-**گزینه الف — اسکریپت نصب مجدد (اگر پوشه پچ کنار آنتی‌گرَویتی باشد):**
+**گزینه الف — اسکریپت نصب مجدد:**
 
 ```
-دابل‌کلیک روی: Reinstall-Proxy-Patch.bat
+دابل‌کلیک روی: <Folder>/Reinstall-Proxy-Patch.bat
 ```
 
 **گزینه ب — اجرای دستی نصب‌کننده:**
 
 ```
-دابل‌کلیک روی: antigravity-proxy-patch/Install-Patch.bat
+دابل‌کلیک روی: <Folder>/antigravity-proxy-patch/Install-Patch.bat
 ```
-
-> **نکته:** پوشه `antigravity-proxy-patch` را کنار محل نصب آنتی‌گرَویتی نگه دارید تا پچ‌کردن مجدد آسان باشد.
 
 ## حذف پچ
 
-حذف‌کننده را اجرا کنید:
+حذف‌کننده را درون پوشه پچ خود اجرا کنید:
 
 ```
-دابل‌کلیک روی: antigravity-proxy-patch/Uninstall-Patch.bat
+دابل‌کلیک روی: <Folder>/antigravity-proxy-patch/Uninstall-Patch.bat
 ```
 
 این موارد حذف می‌شوند:

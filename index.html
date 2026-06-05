@@ -217,6 +217,21 @@
           <h2 data-i18n="section-steps-title">Installation Guide</h2>
           <p data-i18n="section-steps-desc">Follow these three simple steps to patch your Google Antigravity installation.</p>
         </div>
+
+        <!-- Version Selector Switcher -->
+        <div class="version-selector-container">
+          <label class="selector-label" data-i18n="selector-label">Choose your Antigravity edition:</label>
+          <div class="version-tabs">
+            <button class="tab-btn active" data-version="ag2">
+              <span class="tab-title">Antigravity 2</span>
+              <span class="tab-subtitle">Google Antigravity 2.x</span>
+            </button>
+            <button class="tab-btn" data-version="agide">
+              <span class="tab-title">Antigravity IDE</span>
+              <span class="tab-subtitle">Google Antigravity IDE</span>
+            </button>
+          </div>
+        </div>
         
         <div class="steps-container">
           <!-- Step 1 -->
@@ -227,7 +242,7 @@
             </div>
             <div class="step-content">
               <h3 data-i18n="step-1-title">Configure Your Proxy</h3>
-              <p data-i18n="step-1-desc">Open antigravity-proxy-patch/proxy.settings.txt in any text editor and configure your HTTP proxy host and port.</p>
+              <p id="step-1-desc">Open Antigravity 2/antigravity-proxy-patch/proxy.settings.txt in any text editor and configure your HTTP proxy host and port.</p>
               
               <!-- Code block -->
               <div class="code-block-wrapper">
@@ -301,7 +316,7 @@ TYPE=http</pre>
             </div>
             <div class="step-content">
               <h3 data-i18n="step-2-title">Run the Installer</h3>
-              <p data-i18n="step-2-desc">Double-click Install-Patch.bat to automatically apply all patches, edit VS Code user settings, and set env variables.</p>
+              <p id="step-2-desc">Double-click Antigravity 2/antigravity-proxy-patch/Install-Patch.bat to automatically apply all patches, edit VS Code user settings, and set env variables.</p>
               
               <div class="code-block-wrapper">
                 <div class="code-header">
